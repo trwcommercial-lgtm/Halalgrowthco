@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halal Growth Co. — Built for the Ummah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #08090a;
+    --off-black: #0f1012;
+    --surface: #141618;
+    --border: rgba(198,168,75,0.15);
+    --gold: #C6A84B;
+    --gold-light: #e8c96a;
+    --gold-dim: rgba(198,168,75,0.6);
+    --green: #1a3d2b;
+    --green-mid: #2a5a3f;
+    --off-white: #F5F3EC;
+    --muted: rgba(245,243,236,0.45);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-arabic: 'Amiri', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── GEOMETRIC BACKGROUND ── */
+  .geo-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .geo-bg svg {
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 65vw;
+    max-width: 900px;
+    opacity: 0.035;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 120;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    border-bottom: 0.5px solid var(--border);
+    background: rgba(8,9,10,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  /* ── LOGO MARK ── */
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  .nav-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    line-height: 1;
+  }
+  .nav-wordmark-main {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--off-white);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-wordmark-sub {
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--off-white); }
+
+  .nav-cta {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--black) !important;
+    background: var(--gold);
+    padding: 9px 22px;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-bismillah {
+    font-family: var(--font-arabic);
+    font-size: 28px;
+    color: var(--gold-dim);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+
+  .hero-bismillah-citation {
+    font-size: 11px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.18s forwards;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.25s forwards;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 500;
+    line-height: 1.0;
+    color: var(--off-white);
+    letter-spacing: -0.01em;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.55s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.7s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-primary svg { width: 14px; height: 14px; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--off-white); border-color: rgba(198,168,75,0.4); }
+
+  .hero-divider {
+    position: absolute;
+    bottom: 3rem;
+    left: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.9s forwards;
+  }
+  .hero-divider-line {
+    width: 48px;
+    height: 0.5px;
+    background: var(--gold-dim);
+  }
+  .hero-divider-text {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── MARQUEE STRIP ── */
+  .marquee-strip {
+    position: relative;
+    z-index: 1;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    background: var(--off-black);
+    padding: 1rem 0;
+    overflow: hidden;
+  }
+  .marquee-inner {
+    display: flex;
+    gap: 0;
+    animation: marquee 28s linear infinite;
+    width: max-content;
+  }
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2.5rem;
+    white-space: nowrap;
+  }
+  .marquee-text {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .marquee-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── NIYYAH SECTION ── */
+  .niyyah-section {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .niyyah-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .niyyah-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--off-white);
+    margin-bottom: 2rem;
+  }
+
+  .niyyah-arabic {
+    font-family: var(--font-arabic);
+    font-size: 22px;
+    color: var(--gold-dim);
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .niyyah-translation {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .niyyah-body {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .niyyah-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .niyyah-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .niyyah-card-quote {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--off-white);
+    margin-bottom: 2rem;
+  }
+
+  .niyyah-card-attribution {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── SERVICES ── */
+  .services-section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 4rem 8rem;
+    background: var(--off-black);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--off-white);
+  }
+  .section-counter {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 400;
+    color: var(--border);
+    line-height: 1;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+  }
+  .service-card {
+    background: var(--off-black);
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .service-card:hover { background: var(--surface); }
+  .service-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .service-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--off-white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .service-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .service-tag {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid rgba(198,168,75,0.3);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* ── WHO WE SERVE ── */
+  .who-section {
+    position: relative;
+    z-index: 1;
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 4rem;
+    border: 0.5px solid var(--border);
+  }
+  .who-card {
+    background: var(--black);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+    display: block;
+    text-decoration: none;
+  }
+  .who-card:hover { background: var(--surface); }
+  .who-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .who-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--off-white);
+    margin-bottom: 0.5rem;
+  }
+  .who-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── STANDARDS ── */
+  .standards-section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 4rem;
+    background: var(--green);
+    border-top: 0.5px solid rgba(198,168,75,0.2);
+    border-bottom: 0.5px solid rgba(198,168,75,0.2);
+  }
+  .standards-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .standards-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .standards-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .standards-check {
+    width: 20px;
+    height: 20px;
+    border: 0.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .standards-check svg { width: 10px; height: 10px; stroke: var(--gold); }
+  .standards-item-text {
+    font-size: 14px;
+    color: rgba(245,243,236,0.8);
+    line-height: 1.7;
+  }
+  .standards-item-title {
+    font-weight: 500;
+    color: var(--off-white);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 14px;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    position: relative;
+    z-index: 1;
+    padding: 10rem 4rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .cta-arabic {
+    font-family: var(--font-arabic);
+    font-size: 24px;
+    color: var(--gold-dim);
+    margin-bottom: 2rem;
+  }
+  .cta-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--off-white);
+    margin-bottom: 1.5rem;
+  }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 0.5px solid var(--border);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+  }
+  .footer-mark {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .footer-tagline {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes rotateStar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .rotate-slow {
+    animation: rotateStar 80s linear infinite;
+    transform-origin: center;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 0.5px solid var(--border-strong, rgba(198,168,75,0.3));
+    border-radius: 2px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    z-index: 110;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+  @media (max-width: 860px) {
+    nav { padding: 1.1rem 1.5rem; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100vh;
+      width: 78%;
+      max-width: 320px;
+      background: var(--off-black);
+      border-left: 0.5px solid var(--border);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 0;
+      padding: 5.5rem 2rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 105;
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links li { width: 100%; }
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.9rem 0;
+      border-bottom: 0.5px solid var(--border);
+      font-size: 13px;
+    }
+    .nav-cta { margin-top: 1.5rem; text-align: center; }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 102;
+    }
+    .nav-overlay.open { display: block; }
+
+    .niyyah-section { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+    .services-section { padding: 4rem 1.5rem 5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .who-section { padding: 5rem 1.5rem; }
+    .who-grid { grid-template-columns: repeat(2, 1fr); }
+    .standards-section { padding: 4rem 1.5rem; }
+    .standards-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-divider { left: 1.5rem; }
+    .cta-section { padding: 5rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Geometric Islamic background -->
+<div class="geo-bg">
+  <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="rotate-slow">
+      <!-- 8-pointed star geometric pattern -->
+      <polygon points="400,80 440,200 560,200 464,272 500,400 400,320 300,400 336,272 240,200 360,200" fill="none" stroke="#C6A84B" stroke-width="0.8"/>
+      <polygon points="400,120 432,220 540,220 452,284 484,400 400,336 316,400 348,284 260,220 368,220" fill="none" stroke="#C6A84B" stroke-width="0.5"/>
+      <!-- Outer rings -->
+      <circle cx="400" cy="400" r="280" fill="none" stroke="#C6A84B" stroke-width="0.5"/>
+      <circle cx="400" cy="400" r="240" fill="none" stroke="#C6A84B" stroke-width="0.3"/>
+      <circle cx="400" cy="400" r="320" fill="none" stroke="#C6A84B" stroke-width="0.3"/>
+      <!-- Cross lines -->
+      <line x1="400" y1="80" x2="400" y2="720" stroke="#C6A84B" stroke-width="0.3"/>
+      <line x1="80" y1="400" x2="720" y2="400" stroke="#C6A84B" stroke-width="0.3"/>
+      <line x1="160" y1="160" x2="640" y2="640" stroke="#C6A84B" stroke-width="0.3"/>
+      <line x1="640" y1="160" x2="160" y2="640" stroke="#C6A84B" stroke-width="0.3"/>
+      <!-- Octagon -->
+      <polygon points="400,100 580,180 700,360 700,440 580,620 400,700 220,620 100,440 100,360 220,180" fill="none" stroke="#C6A84B" stroke-width="0.4"/>
+    </g>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="halalgrowthco.html" class="nav-logo">
+    <img src="logo-mark.png" alt="Halal Growth Co. logo" class="logo-mark">
+    <div class="nav-wordmark">
+      <span class="nav-wordmark-main">Halal Growth Co.</span>
+      <span class="nav-wordmark-sub">Built for the Ummah</span>
+    </div>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="halalgrowthco-services.html">Services</a></li>
+    <li><a href="halalgrowthco-why-halal.html">Why Halal</a></li>
+    <li><a href="halalgrowthco-industries.html">Industries</a></li>
+    <li><a href="halalgrowthco-pricing.html">Pricing</a></li>
+    <li><a href="halalgrowthco-standards.html">Standards</a></li>
+    <li><a href="halalgrowthco-work.html">Work</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Us</a></li>
+  </ul>
+</nav>
+<div class="nav-overlay"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+  <p class="hero-bismillah-citation">In the name of Allah, the Most Gracious, the Most Merciful</p>
+  <p class="hero-eyebrow">A Sharia-Compliant Marketing Agency, Built for the Ummah</p>
+  <h1 class="hero-headline">
+    Growth, the<br><em>halal</em><br>way.
+  </h1>
+  <p class="hero-sub">
+    We are a Sharia-compliant digital marketing agency exclusively serving Muslim-owned businesses. No haram. No compromise. World-class results.
+  </p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">
+      Start Your Growth
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M8 2l6 5-6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#about" class="btn-ghost">Our Story</a>
+  </div>
+  <div class="hero-divider">
+    <div class="hero-divider-line"></div>
+    <span class="hero-divider-text">Chicago, IL — Serving the Ummah Nationwide</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" role="marquee" aria-label="Services offered">
+  <div class="marquee-inner">
+    <!-- repeated twice for seamless loop -->
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Halal Lead Generation</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Sharia-Compliant Advertising</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Muslim Business SEO</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Social Media Marketing</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Email Marketing</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Brand Identity</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Google Ads</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Web Design</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Halal Lead Generation</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Sharia-Compliant Advertising</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Muslim Business SEO</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Social Media Marketing</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Email Marketing</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Brand Identity</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Google Ads</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span class="marquee-text">Web Design</span></div>
+  </div>
+</div>
+
+<!-- NIYYAH SECTION -->
+<section class="niyyah-section" id="about">
+  <div>
+    <p class="niyyah-label">Our Foundation</p>
+    <h2 class="niyyah-heading">Every campaign starts with intention.</h2>
+    <p class="niyyah-arabic">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ</p>
+    <p class="niyyah-translation">"Indeed, actions are by intentions." — Sahih al-Bukhari 1, Sahih Muslim 1907</p>
+    <p class="niyyah-body">
+      After years in the marketing industry, our founder made a decision: only grow what is good. Every strategy, every campaign, every dollar earned — operated as an act of ibadah, in service of the Ummah.
+    </p>
+  </div>
+  <div class="niyyah-card">
+    <p class="niyyah-card-quote">
+      "For years I helped businesses grow. Then I asked myself — who am I really building for? After returning to my deen, I formalized what I always knew was right. This agency exists for one reason: to help Muslim businesses thrive without compromising what Allah commanded."
+    </p>
+    <p class="niyyah-card-attribution">— Aamir Khan, Founder</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">What We Do</p>
+        <h2 class="section-heading">World-class marketing.<br>Halal standards.</h2>
+      </div>
+      <span class="section-counter">06</span>
+    </div>
+    <div class="services-grid">
+      <a href="halalgrowthco-services.html#seo" class="service-card">
+        <div class="service-number">01</div>
+        <h3 class="service-title">Search Engine Optimization</h3>
+        <p class="service-body">Rank higher, get found first. Local and national SEO built specifically for Muslim-owned service businesses.</p>
+        <span class="service-tag">Halal Growth</span>
+      </a>
+      <a href="halalgrowthco-services.html#ads" class="service-card">
+        <div class="service-number">02</div>
+        <h3 class="service-title">Paid Advertising</h3>
+        <p class="service-body">Google Ads and Meta campaigns with zero haram targeting, zero deceptive copy. Pure performance.</p>
+        <span class="service-tag">Sharia Compliant</span>
+      </a>
+      <a href="halalgrowthco-services.html#social" class="service-card">
+        <div class="service-number">03</div>
+        <h3 class="service-title">Social Media</h3>
+        <p class="service-body">Content that speaks to your community authentically. Building brand trust within the Ummah.</p>
+        <span class="service-tag">Community First</span>
+      </a>
+      <a href="halalgrowthco-services.html#brand" class="service-card">
+        <div class="service-number">04</div>
+        <h3 class="service-title">Brand Identity</h3>
+        <p class="service-body">Your brand should reflect your values. We build visual identities that honor Islamic principles of beauty and purpose.</p>
+        <span class="service-tag">Purposeful Design</span>
+      </a>
+      <a href="halalgrowthco-services.html#web" class="service-card">
+        <div class="service-number">05</div>
+        <h3 class="service-title">Web Design</h3>
+        <p class="service-body">Fast, beautiful websites built for conversion. GitHub-hosted, SEO-optimized, and built to last.</p>
+        <span class="service-tag">High Performance</span>
+      </a>
+      <a href="halalgrowthco-services.html#email" class="service-card">
+        <div class="service-number">06</div>
+        <h3 class="service-title">Email Marketing</h3>
+        <p class="service-body">Truthful, non-manipulative email campaigns that build real relationships with your customers.</p>
+        <span class="service-tag">Amanah Driven</span>
+      </a>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="halalgrowthco-services.html" class="btn-ghost">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="who-section">
+  <div>
+    <p class="section-label">Who We Serve</p>
+    <h2 class="section-heading">Built for Muslim-owned<br>businesses of every kind.</h2>
+  </div>
+  <div class="who-grid">
+    <a href="halalgrowthco-industries.html#restaurants" class="who-card">
+      <span class="who-icon">🥩</span>
+      <p class="who-title">Halal Restaurants & Food</p>
+      <p class="who-desc">From halal butchers to full-service restaurants</p>
+    </a>
+    <a href="halalgrowthco-industries.html#education" class="who-card">
+      <span class="who-icon">🏫</span>
+      <p class="who-title">Islamic Schools & Masjids</p>
+      <p class="who-desc">Educational institutions serving the community</p>
+    </a>
+    <a href="halalgrowthco-industries.html#services" class="who-card">
+      <span class="who-icon">🏠</span>
+      <p class="who-title">Muslim Realtors & Services</p>
+      <p class="who-desc">Home services, real estate, and professional firms</p>
+    </a>
+    <a href="halalgrowthco-industries.html#fashion" class="who-card">
+      <span class="who-icon">👗</span>
+      <p class="who-title">Modest Fashion & Retail</p>
+      <p class="who-desc">Modest clothing brands and Islamic product retailers</p>
+    </a>
+  </div>
+  <div style="text-align: center; margin-top: 3rem;">
+    <a href="halalgrowthco-industries.html" class="btn-ghost">See All Industries</a>
+  </div>
+</section>
+
+<!-- STANDARDS -->
+<section class="standards-section" id="standards">
+  <div class="standards-inner">
+    <div>
+      <p class="niyyah-label" style="color: var(--gold-light);">Our Commitment</p>
+      <h2 class="niyyah-heading" style="color: var(--off-white);">Sharia-compliant by design. Not just by name.</h2>
+    </div>
+    <ul class="standards-list">
+      <li class="standards-item">
+        <div class="standards-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><span class="standards-item-title">No haram industry clients</span><span class="standards-item-text">We do not market alcohol, gambling, interest-based financial products, or any haram industry. Ever.</span></div>
+      </li>
+      <li class="standards-item">
+        <div class="standards-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><span class="standards-item-title">No deceptive advertising</span><span class="standards-item-text">All campaigns are built on truth (sidq) and trust (amanah). No false urgency, no manipulative copy, no deceptive offers.</span></div>
+      </li>
+      <li class="standards-item">
+        <div class="standards-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><span class="standards-item-title">Riba-free pricing structures</span><span class="standards-item-text">Our retainer and service agreements are structured to avoid any interest-based or exploitative financial arrangements.</span></div>
+      </li>
+      <li class="standards-item">
+        <div class="standards-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><span class="standards-item-title">Brotherhood over profit</span><span class="standards-item-text">We turn away clients whose business conflicts with Islamic values, even if it costs us revenue. The Ummah comes first.</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <p class="cta-arabic">بَارَكَ اللَّهُ فِيكُمْ</p>
+  <h2 class="cta-heading">Ready to grow with barakah?</h2>
+  <p class="cta-sub">Let's build something your business and your deen can both be proud of. Book a free strategy call today.</p>
+  <a href="mailto:info@halalgrowthco.com" class="btn-primary" style="margin: 0 auto; display: inline-flex;">
+    Book a Free Strategy Call
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;"><path d="M1 7h12M8 2l6 5-6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-mark">Halal Growth Co.</span>
+  <span class="footer-tagline">Built for the Ummah. Halal standards. World-class results.</span>
+  <span class="footer-copy">© 2026 Halal Growth Co. — Schaumburg, IL</span>
+</footer>
+
+
+<script>
+  (function() {
+    var toggle = document.querySelector('.nav-toggle');
+    var links = document.querySelector('.nav-links');
+    var overlay = document.querySelector('.nav-overlay');
+    if (!toggle || !links) return;
+    function closeMenu() {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+    }
+    toggle.addEventListener('click', function() {
+      var isOpen = links.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      if (overlay) overlay.classList.toggle('open', isOpen);
+    });
+    if (overlay) overlay.addEventListener('click', closeMenu);
+    links.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Standards — Halal Growth Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #08090a;
+    --off-black: #0f1012;
+    --surface: #141618;
+    --border: rgba(198,168,75,0.15);
+    --border-strong: rgba(198,168,75,0.3);
+    --gold: #C6A84B;
+    --gold-light: #e8c96a;
+    --gold-dim: rgba(198,168,75,0.5);
+    --green: #1a3d2b;
+    --green-mid: #2a5a3f;
+    --green-light: rgba(26,61,43,0.4);
+    --off-white: #F5F3EC;
+    --muted: rgba(245,243,236,0.45);
+    --muted-mid: rgba(245,243,236,0.65);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-arabic: 'Amiri', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GEO BG */
+  .geo-bg {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .geo-bg svg {
+    position: absolute; bottom: -10%; left: -8%;
+    width: 55vw; max-width: 700px; opacity: 0.025;
+  }
+  @keyframes rotateStar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .rotate-slow { animation: rotateStar 100s linear infinite; transform-origin: center; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 120;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    border-bottom: 0.5px solid var(--border);
+    background: rgba(8,9,10,0.9);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-mark { width: 38px; height: 38px; flex-shrink: 0; object-fit: contain; }
+  .nav-wordmark { display: flex; flex-direction: column; line-height: 1; }
+  .nav-wordmark-main {
+    font-family: var(--font-display); font-size: 16px;
+    font-weight: 500; color: var(--off-white);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .nav-wordmark-sub {
+    font-size: 9px; font-weight: 400; color: var(--gold);
+    letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .nav-back {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--off-white); }
+  .nav-back svg { width: 12px; height: 12px; }
+
+  /* PAGE HEADER */
+  .page-header {
+    position: relative; z-index: 1;
+    padding: 10rem 4rem 5rem;
+    max-width: 1100px; margin: 0 auto;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .page-eyebrow {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .page-eyebrow-line { width: 32px; height: 0.5px; background: var(--gold-dim); }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 500; line-height: 1.05;
+    color: var(--off-white); margin-bottom: 2rem;
+  }
+  .page-title em { font-style: italic; color: var(--gold); }
+  .page-intro {
+    font-size: 16px; color: var(--muted-mid);
+    max-width: 640px; line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+  .page-disclaimer {
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    border-left: 2px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    border-radius: 2px;
+    max-width: 640px;
+  }
+  .page-disclaimer p {
+    font-size: 13px; color: var(--muted-mid); line-height: 1.8;
+  }
+  .page-disclaimer strong { color: var(--off-white); font-weight: 500; }
+
+  /* CONTENT LAYOUT */
+  .content-wrap {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  /* SECTION NAV */
+  .standards-nav {
+    position: sticky; top: 72px; z-index: 50;
+    background: rgba(8,9,10,0.95);
+    border-bottom: 0.5px solid var(--border);
+    backdrop-filter: blur(12px);
+    padding: 0 4rem;
+    margin: 0 -4rem;
+  }
+  .standards-nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; gap: 0; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .standards-nav-inner::-webkit-scrollbar { display: none; }
+  .snav-link {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    padding: 1rem 1.5rem; white-space: nowrap;
+    border-bottom: 1.5px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .snav-link:hover { color: var(--off-white); border-color: var(--gold-dim); }
+  .snav-link.active { color: var(--gold); border-color: var(--gold); }
+
+  /* PRINCIPLE BLOCK */
+  .principle-block {
+    padding: 5rem 0;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .principle-sidebar { position: sticky; top: 140px; }
+  .principle-number {
+    font-family: var(--font-display);
+    font-size: 5rem; font-weight: 400;
+    color: var(--border); line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .principle-label {
+    font-size: 10px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .principle-name {
+    font-family: var(--font-display);
+    font-size: 1.8rem; font-weight: 500;
+    color: var(--off-white); line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .principle-arabic {
+    font-family: var(--font-arabic);
+    font-size: 20px; color: var(--gold-dim);
+    line-height: 1.8; margin-bottom: 0.25rem;
+  }
+  .principle-transliteration {
+    font-size: 11px; font-style: italic;
+    color: var(--muted); letter-spacing: 0.04em;
+  }
+
+  .principle-content {}
+  .daleel-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .daleel-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 2px; background: var(--gold-dim);
+  }
+  .daleel-source {
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .daleel-source-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .daleel-arabic {
+    font-family: var(--font-arabic);
+    font-size: 19px; color: var(--off-white);
+    line-height: 2; margin-bottom: 0.75rem;
+    direction: rtl; text-align: right;
+  }
+  .daleel-translation {
+    font-size: 14px; font-style: italic;
+    color: var(--muted-mid); line-height: 1.7;
+    margin-bottom: 0; border-top: 0.5px solid var(--border);
+    padding-top: 0.75rem; margin-top: 0.75rem;
+  }
+  .daleel-reference {
+    font-size: 11px; color: var(--muted);
+    margin-top: 0.5rem; letter-spacing: 0.04em;
+  }
+
+  .principle-explanation {
+    font-size: 15px; color: var(--muted-mid);
+    line-height: 1.9; margin-bottom: 2rem;
+  }
+  .principle-explanation strong { color: var(--off-white); font-weight: 500; }
+
+  .application-block {
+    background: var(--green-light);
+    border: 0.5px solid rgba(198,168,75,0.2);
+    border-radius: 4px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .application-title {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .application-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .application-item {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    font-size: 13px; color: rgba(245,243,236,0.75); line-height: 1.7;
+  }
+  .app-check {
+    width: 16px; height: 16px;
+    border: 0.5px solid var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px; border-radius: 2px;
+  }
+  .app-check svg { width: 8px; height: 8px; stroke: var(--gold); }
+
+  .violation-block {
+    background: rgba(139,30,30,0.15);
+    border: 0.5px solid rgba(220,80,80,0.2);
+    border-radius: 4px;
+    padding: 1.75rem 2rem;
+  }
+  .violation-title {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #e07070;
+    margin-bottom: 1rem;
+  }
+  .violation-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .violation-item {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    font-size: 13px; color: rgba(245,243,236,0.65); line-height: 1.7;
+  }
+  .viol-x {
+    width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    color: #e07070; font-size: 12px; font-weight: 500;
+  }
+
+  /* ACCOUNTABILITY SECTION */
+  .accountability-section {
+    position: relative; z-index: 1;
+    background: var(--off-black);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 6rem 4rem;
+    margin-top: 2rem;
+  }
+  .accountability-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  }
+  .acc-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    font-weight: 500; line-height: 1.2;
+    color: var(--off-white); margin-bottom: 1.5rem;
+  }
+  .acc-body {
+    font-size: 14px; color: var(--muted-mid); line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  .acc-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 4px; padding: 2rem;
+    height: 100%;
+  }
+  .acc-card-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem; font-weight: 500;
+    color: var(--off-white); margin-bottom: 1rem;
+  }
+  .acc-card-body {
+    font-size: 13px; color: var(--muted); line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .acc-steps {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .acc-step {
+    display: flex; gap: 0.75rem;
+    font-size: 13px; color: rgba(245,243,236,0.7); line-height: 1.7;
+  }
+  .acc-step-num {
+    font-family: var(--font-display);
+    font-size: 1.1rem; color: var(--gold);
+    line-height: 1.3; flex-shrink: 0; width: 18px;
+  }
+
+  /* DECLARATION */
+  .declaration-section {
+    position: relative; z-index: 1;
+    padding: 8rem 4rem;
+    max-width: 780px; margin: 0 auto;
+    text-align: center;
+  }
+  .declaration-arabic {
+    font-family: var(--font-arabic);
+    font-size: 26px; color: var(--gold-dim);
+    line-height: 2; margin-bottom: 1rem;
+  }
+  .declaration-translation {
+    font-size: 12px; font-style: italic;
+    color: var(--muted); margin-bottom: 3rem; letter-spacing: 0.04em;
+  }
+  .declaration-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 400; font-style: italic;
+    line-height: 1.6; color: var(--off-white);
+    margin-bottom: 2.5rem;
+  }
+  .declaration-sig {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .declaration-sig-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem; color: var(--off-white);
+    font-style: italic;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gold); color: var(--black);
+    font-family: var(--font-body); font-size: 12px;
+    font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 14px 32px;
+    border-radius: 2px; text-decoration: none;
+    margin-top: 2.5rem; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 1;
+    border-top: 0.5px solid var(--border);
+    padding: 2.5rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-mark {
+    font-family: var(--font-display); font-size: 14px;
+    font-weight: 500; letter-spacing: 0.1em;
+    color: var(--gold); text-transform: uppercase;
+  }
+  .footer-copy { font-size: 11px; color: var(--muted); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+  .fade-in:nth-child(2) { animation-delay: 0.15s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.45s; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 0.5px solid var(--border-strong, rgba(198,168,75,0.3));
+    border-radius: 2px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    z-index: 110;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+  @media (max-width: 860px) {
+    nav { padding: 1.1rem 1.5rem; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100vh;
+      width: 78%;
+      max-width: 320px;
+      background: var(--off-black);
+      border-left: 0.5px solid var(--border);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 0;
+      padding: 5.5rem 2rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 105;
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links li { width: 100%; }
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.9rem 0;
+      border-bottom: 0.5px solid var(--border);
+      font-size: 13px;
+    }
+    .nav-cta { margin-top: 1.5rem; text-align: center; }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 102;
+    }
+    .nav-overlay.open { display: block; }
+
+    .page-header { padding: 7rem 1.5rem 3rem; }
+    .standards-nav { padding: 0 1.5rem; margin: 0 -1.5rem; }
+    .content-wrap { padding: 0 1.5rem; }
+    .principle-block { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+    .principle-sidebar { position: static; }
+    .accountability-section { padding: 4rem 1.5rem; }
+    .accountability-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .declaration-section { padding: 5rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="geo-bg">
+  <svg viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="rotate-slow">
+      <polygon points="350,60 390,175 510,175 415,245 450,370 350,290 250,370 285,245 190,175 310,175" fill="none" stroke="#C6A84B" stroke-width="0.8"/>
+      <circle cx="350" cy="350" r="260" fill="none" stroke="#C6A84B" stroke-width="0.4"/>
+      <circle cx="350" cy="350" r="200" fill="none" stroke="#C6A84B" stroke-width="0.3"/>
+      <line x1="350" y1="60" x2="350" y2="640" stroke="#C6A84B" stroke-width="0.3"/>
+      <line x1="60" y1="350" x2="640" y2="350" stroke="#C6A84B" stroke-width="0.3"/>
+      <line x1="135" y1="135" x2="565" y2="565" stroke="#C6A84B" stroke-width="0.25"/>
+      <line x1="565" y1="135" x2="135" y2="565" stroke="#C6A84B" stroke-width="0.25"/>
+    </g>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="halalgrowthco.html" class="nav-logo">
+    <img src="logo-mark.png" alt="Halal Growth Co. logo" class="logo-mark">
+    <div class="nav-wordmark">
+      <span class="nav-wordmark-main">Halal Growth Co.</span>
+      <span class="nav-wordmark-sub">Built for the Ummah</span>
+    </div>
+  </a>
+  <a href="halalgrowthco.html" class="nav-back">
+    <svg viewBox="0 0 12 12" fill="none"><path d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+<div class="nav-overlay"></div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-eyebrow fade-in">
+    <span class="page-eyebrow-line"></span>
+    Sharia Compliance Framework
+  </div>
+  <h1 class="page-title fade-in">
+    Not just halal<br>in name. <em>In practice.</em>
+  </h1>
+  <p class="page-intro fade-in">
+    We do not use the word "Sharia-compliant" lightly. This page exists to show our work — every standard we hold ourselves to, grounded in Quran, Sunnah, and the principles of Islamic business ethics (fiqh al-muamalat).
+  </p>
+  <div class="page-disclaimer fade-in">
+    <p><strong>An honest note:</strong> There is no formal "halal certification" body for marketing agencies. Rather than claim a certificate that doesn't exist, we do something more Islamic — we declare our standards publicly, anchor them in daleel, and hold ourselves accountable before Allah and the community. If we fall short, we want to be told.</p>
+  </div>
+</div>
+
+<!-- STICKY SECTION NAV -->
+<div class="standards-nav" role="navigation" aria-label="Standards sections">
+  <div class="standards-nav-inner">
+    <a href="#sidq" class="snav-link active">01 Sidq</a>
+    <a href="#amanah" class="snav-link">02 Amanah</a>
+    <a href="#halal-only" class="snav-link">03 Halal Only</a>
+    <a href="#no-gharar" class="snav-link">04 No Gharar</a>
+    <a href="#no-riba" class="snav-link">05 No Riba</a>
+    <a href="#ihsan" class="snav-link">06 Ihsan</a>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <!-- PRINCIPLE 1: SIDQ -->
+  <div class="principle-block" id="sidq">
+    <div class="principle-sidebar">
+      <div class="principle-number">01</div>
+      <div class="principle-label">First Principle</div>
+      <div class="principle-name">Sidq</div>
+      <div class="principle-arabic">الصِّدْق</div>
+      <div class="principle-transliteration">Truthfulness in all things</div>
+    </div>
+    <div class="principle-content">
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Quran — Surah Al-Baqarah 2:283</div>
+        <div class="daleel-arabic">وَلَا تَكْتُمُوا الشَّهَادَةَ ۚ وَمَن يَكْتُمْهَا فَإِنَّهُ آثِمٌ قَلْبُهُ</div>
+        <div class="daleel-translation">"And do not conceal testimony, for whoever conceals it — his heart is indeed sinful."</div>
+        <div class="daleel-reference">Surah Al-Baqarah (2:283)</div>
+      </div>
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Hadith — Sahih Bukhari</div>
+        <div class="daleel-arabic">عَلَيْكُمْ بِالصِّدْقِ فَإِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ</div>
+        <div class="daleel-translation">"You must be truthful, for truthfulness leads to righteousness, and righteousness leads to Paradise."</div>
+        <div class="daleel-reference">Sahih al-Bukhari 6094, Sahih Muslim 2607</div>
+      </div>
+      <p class="principle-explanation">
+        In marketing, <strong>sidq means every claim we make for a client must be true.</strong> No inflated results. No fake reviews. No misleading before-and-after comparisons. No false urgency ("Only 2 left!" when there are 200). If we cannot honestly represent a product or service, we will not market it.
+      </p>
+      <div class="application-block">
+        <div class="application-title">How we apply Sidq</div>
+        <ul class="application-list">
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>All ad copy is reviewed for truthfulness before publishing</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We report honest performance metrics — good or bad</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Testimonials used only with genuine client consent and accuracy</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We tell clients what we cannot deliver — before signing, not after</li>
+        </ul>
+      </div>
+      <div class="violation-block">
+        <div class="violation-title">What we refuse to do</div>
+        <ul class="violation-list">
+          <li class="violation-item"><div class="viol-x">✕</div>Write false or exaggerated ad copy</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Create fake urgency or scarcity claims</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Produce or solicit fake reviews</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Conceal fees, deliverables, or performance issues from clients</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLE 2: AMANAH -->
+  <div class="principle-block" id="amanah">
+    <div class="principle-sidebar">
+      <div class="principle-number">02</div>
+      <div class="principle-label">Second Principle</div>
+      <div class="principle-name">Amanah</div>
+      <div class="principle-arabic">الأمانة</div>
+      <div class="principle-transliteration">Trust & Integrity</div>
+    </div>
+    <div class="principle-content">
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Quran — Surah Al-Anfal 8:27</div>
+        <div class="daleel-arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَخُونُوا اللَّهَ وَالرَّسُولَ وَتَخُونُوا أَمَانَاتِكُمْ</div>
+        <div class="daleel-translation">"O you who have believed, do not betray Allah and His Messenger or betray your trusts while you know."</div>
+        <div class="daleel-reference">Surah Al-Anfal (8:27)</div>
+      </div>
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Hadith — Sahih Bukhari & Muslim</div>
+        <div class="daleel-arabic">آيَةُ الْمُنَافِقِ ثَلَاثٌ: إِذَا حَدَّثَ كَذَبَ، وَإِذَا وَعَدَ أَخْلَفَ، وَإِذَا اؤْتُمِنَ خَانَ</div>
+        <div class="daleel-translation">"The signs of a hypocrite are three: when he speaks he lies, when he makes a promise he breaks it, and when he is entrusted he betrays."</div>
+        <div class="daleel-reference">Sahih al-Bukhari 33, Sahih Muslim 59</div>
+      </div>
+      <p class="principle-explanation">
+        When a Muslim business owner hands us their brand, their budget, and their reputation — they have placed an amanah in our hands. <strong>That trust is sacred.</strong> We treat every client's money as if it were our own, and every campaign as if our akhira depended on its integrity.
+      </p>
+      <div class="application-block">
+        <div class="application-title">How we apply Amanah</div>
+        <ul class="application-list">
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Client budgets are managed with full transparency and detailed accounting</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We keep every promise made in our agreements</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Client data and business information is never shared or exploited</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We honor deadlines or communicate delays proactively</li>
+        </ul>
+      </div>
+      <div class="violation-block">
+        <div class="violation-title">What we refuse to do</div>
+        <ul class="violation-list">
+          <li class="violation-item"><div class="viol-x">✕</div>Overbill or pad ad spend for agency profit</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Share client strategies or data with competitors</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Make promises in a proposal we cannot keep in delivery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLE 3: HALAL ONLY -->
+  <div class="principle-block" id="halal-only">
+    <div class="principle-sidebar">
+      <div class="principle-number">03</div>
+      <div class="principle-label">Third Principle</div>
+      <div class="principle-name">Halal Only</div>
+      <div class="principle-arabic">الحلال فقط</div>
+      <div class="principle-transliteration">Permissible clients & content</div>
+    </div>
+    <div class="principle-content">
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Quran — Surah Al-Baqarah 2:275</div>
+        <div class="daleel-arabic">وَأَحَلَّ اللَّهُ الْبَيْعَ وَحَرَّمَ الرِّبَا</div>
+        <div class="daleel-translation">"Allah has permitted trading and forbidden interest."</div>
+        <div class="daleel-reference">Surah Al-Baqarah (2:275)</div>
+      </div>
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Quran — Surah Al-Ma'idah 5:2</div>
+        <div class="daleel-arabic">وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ ۖ وَلَا تَعَاوَنُوا عَلَى الْإِثْمِ وَالْعُدْوَانِ</div>
+        <div class="daleel-translation">"And cooperate in righteousness and piety, but do not cooperate in sin and aggression."</div>
+        <div class="daleel-reference">Surah Al-Ma'idah (5:2)</div>
+      </div>
+      <p class="principle-explanation">
+        This ayah is the foundation of our entire client policy. <strong>Marketing a haram business makes us a cooperator in that sin.</strong> We refuse all clients whose core business is impermissible — regardless of how much revenue it costs us. This is non-negotiable.
+      </p>
+      <div class="application-block">
+        <div class="application-title">Industries we serve</div>
+        <ul class="application-list">
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Halal restaurants, food producers, and halal butchers</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Islamic schools, masjids, and educational institutions</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Modest fashion and Islamic products</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Muslim-owned professional services (law, real estate, healthcare)</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>General halal consumer goods and home services</li>
+        </ul>
+      </div>
+      <div class="violation-block">
+        <div class="violation-title">Industries we will never serve</div>
+        <ul class="violation-list">
+          <li class="violation-item"><div class="viol-x">✕</div>Alcohol, nightclubs, and entertainment with haram content</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Gambling, casinos, and betting platforms</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Conventional interest-based financial products (riba)</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Pork products and non-halal meat</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Adult content, dating apps, or anything immodest</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Tobacco and vaping products</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLE 4: NO GHARAR -->
+  <div class="principle-block" id="no-gharar">
+    <div class="principle-sidebar">
+      <div class="principle-number">04</div>
+      <div class="principle-label">Fourth Principle</div>
+      <div class="principle-name">No Gharar</div>
+      <div class="principle-arabic">لا غرر</div>
+      <div class="principle-transliteration">No deception or uncertainty</div>
+    </div>
+    <div class="principle-content">
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Hadith — Sahih Muslim</div>
+        <div class="daleel-arabic">نَهَى رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عَنْ بَيْعِ الْغَرَرِ</div>
+        <div class="daleel-translation">"The Messenger of Allah (peace be upon him) forbade transactions involving gharar (deception/uncertainty)."</div>
+        <div class="daleel-reference">Sahih Muslim 1513</div>
+      </div>
+      <p class="principle-explanation">
+        Gharar in marketing takes many forms: hidden fees, vague contract terms, manipulative psychological tactics, dark patterns in UX, or deliberately obscuring a product's limitations. <strong>Any tactic designed to confuse, pressure, or mislead a consumer is gharar — and we don't use it.</strong>
+      </p>
+      <div class="application-block">
+        <div class="application-title">How we eliminate Gharar</div>
+        <ul class="application-list">
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>All service agreements are written in plain, clear language</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>No dark patterns, hidden checkboxes, or auto-renewing traps in campaigns we build</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Pricing is stated clearly — no surprise charges after onboarding</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We disclose when a result is uncertain rather than guaranteeing what we can't</li>
+        </ul>
+      </div>
+      <div class="violation-block">
+        <div class="violation-title">Tactics we refuse to use</div>
+        <ul class="violation-list">
+          <li class="violation-item"><div class="viol-x">✕</div>Countdown timers on offers that don't actually expire</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Bait-and-switch pricing or hidden retainer clauses</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Manipulative psychological pressure tactics in copy</li>
+          <li class="violation-item"><div class="viol-x">✕</div>Misleading "free" offers with concealed conditions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLE 5: NO RIBA -->
+  <div class="principle-block" id="no-riba">
+    <div class="principle-sidebar">
+      <div class="principle-number">05</div>
+      <div class="principle-label">Fifth Principle</div>
+      <div class="principle-name">No Riba</div>
+      <div class="principle-arabic">لا ربا</div>
+      <div class="principle-transliteration">Interest-free dealings</div>
+    </div>
+    <div class="principle-content">
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Quran — Surah Al-Baqarah 2:278-279</div>
+        <div class="daleel-arabic">يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَذَرُوا مَا بَقِيَ مِنَ الرِّبَا إِن كُنتُم مُّؤْمِنِينَ</div>
+        <div class="daleel-translation">"O you who believe, fear Allah and give up what remains of riba, if you are truly believers."</div>
+        <div class="daleel-reference">Surah Al-Baqarah (2:278)</div>
+      </div>
+      <p class="principle-explanation">
+        Our service contracts are structured as fixed-fee or retainer agreements — <strong>never as interest-accruing arrangements.</strong> We do not charge late fees compounded with interest. We do not use payment processors that embed riba structures. Where a client faces hardship, we prefer to renegotiate terms rather than penalize with interest charges.
+      </p>
+      <div class="application-block">
+        <div class="application-title">Our financial practices</div>
+        <ul class="application-list">
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Flat monthly retainers — no interest-based payment structures</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Late payment handled through renegotiation, not compounding fees</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We do not market riba-based financial products for any client</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Halal payment alternatives offered where available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLE 6: IHSAN -->
+  <div class="principle-block" id="ihsan">
+    <div class="principle-sidebar">
+      <div class="principle-number">06</div>
+      <div class="principle-label">Sixth Principle</div>
+      <div class="principle-name">Ihsan</div>
+      <div class="principle-arabic">الإحسان</div>
+      <div class="principle-transliteration">Excellence as worship</div>
+    </div>
+    <div class="principle-content">
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Hadith — Sahih Muslim</div>
+        <div class="daleel-arabic">إِنَّ اللَّهَ كَتَبَ الإِحْسَانَ عَلَى كُلِّ شَيْءٍ</div>
+        <div class="daleel-translation">"Indeed Allah has prescribed ihsan (excellence) in all things."</div>
+        <div class="daleel-reference">Sahih Muslim 1955</div>
+      </div>
+      <div class="daleel-card">
+        <div class="daleel-source"><span class="daleel-source-dot"></span>Hadith — Bayhaqi</div>
+        <div class="daleel-arabic">إِنَّ اللَّهَ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلاً أَنْ يُتْقِنَهُ</div>
+        <div class="daleel-translation">"Indeed Allah loves that when one of you does a deed, he does it with itqan (perfection and excellence)."</div>
+        <div class="daleel-reference">Shu'ab al-Iman by Al-Bayhaqi 5314, graded Hasan by Al-Albani in Sahih al-Jami 1880</div>
+      </div>
+      <p class="principle-explanation">
+        Ihsan means doing everything as though Allah is watching — because He is. For us, <strong>mediocre work is not a halal option.</strong> Every campaign, every deliverable, every email to a client is an act of ibadah when performed with sincerity and excellence. We don't just meet the standard — we seek to exceed it, because that is what Allah loves.
+      </p>
+      <div class="application-block">
+        <div class="application-title">What Ihsan looks like in our work</div>
+        <ul class="application-list">
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We do not submit work we are not proud of</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Client success is treated as our own success</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>We pursue continuous improvement in knowledge and skill</li>
+          <li class="application-item"><div class="app-check"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2.5 4-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Every interaction with clients reflects Islamic character (akhlaq)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ACCOUNTABILITY SECTION -->
+<div class="accountability-section">
+  <div class="accountability-inner">
+    <div>
+      <p class="principle-label">Our Accountability</p>
+      <h2 class="acc-heading">How we hold ourselves to this.</h2>
+      <p class="acc-body">
+        Standards without accountability are just words. We have built specific mechanisms to ensure these principles are not just declared — but practiced.
+      </p>
+      <p class="acc-body">
+        We invite the Muslim community to hold us to account. If you observe us violating any of these principles — in our marketing, our contracts, or our conduct — we want to know. Reach out directly.
+      </p>
+    </div>
+    <div class="acc-card">
+      <h3 class="acc-card-title">Our accountability structure</h3>
+      <p class="acc-card-body">Three practices we maintain to keep ourselves honest before Allah and the Ummah.</p>
+      <ul class="acc-steps">
+        <li class="acc-step"><span class="acc-step-num">1.</span><span>Annual public review of these standards — we update them as our understanding of fiqh al-muamalat deepens</span></li>
+        <li class="acc-step"><span class="acc-step-num">2.</span><span>Seeking guidance from Islamic scholars on novel marketing questions (AI, data privacy, digital contracts)</span></li>
+        <li class="acc-step"><span class="acc-step-num">3.</span><span>Open community feedback — any Muslim who sees us fall short of these standards may contact us directly at standards@halalgrowthco.com</span></li>
+        <li class="acc-step"><span class="acc-step-num">4.</span><span>Internal niyyah check before every client engagement — we begin with Bismillah and sincere intention</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DECLARATION -->
+<section class="declaration-section">
+  <p class="declaration-arabic">رَبَّنَا تَقَبَّلْ مِنَّا</p>
+  <p class="declaration-translation">"Our Lord, accept this from us." — Surah Al-Baqarah (2:127)</p>
+  <p class="declaration-text">
+    "This agency was built as an act of ibadah. Every client we serve, every campaign we run, every standard on this page — we do it seeking the pleasure of Allah alone. We ask Him to accept it, bless it, and forgive us where we fall short."
+  </p>
+  <p class="declaration-sig">Founder, Halal Growth Co.</p>
+  <p class="declaration-sig-name">Aamir Khan</p>
+  <a href="halalgrowthco.html#contact" class="btn-primary">Work With Us</a>
+</section>
+
+<footer>
+  <span class="footer-mark">Halal Growth Co.</span>
+  <span class="footer-copy">© 2026 Halal Growth Co. — Schaumburg, IL</span>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('.snav-link');
+  const sections = ['sidq','amanah','halal-only','no-gharar','no-riba','ihsan'];
+  window.addEventListener('scroll', () => {
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 180) current = id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+
+<script>
+  (function() {
+    var toggle = document.querySelector('.nav-toggle');
+    var links = document.querySelector('.nav-links');
+    var overlay = document.querySelector('.nav-overlay');
+    if (!toggle || !links) return;
+    function closeMenu() {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+    }
+    toggle.addEventListener('click', function() {
+      var isOpen = links.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      if (overlay) overlay.classList.toggle('open', isOpen);
+    });
+    if (overlay) overlay.addEventListener('click', closeMenu);
+    links.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+  })();
+</script>
+</body>
+</html>
