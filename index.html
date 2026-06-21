@@ -743,6 +743,48 @@
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
   }
 
+  .contact-form { max-width: 480px; margin: 2.5rem auto 0; text-align: left; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .form-input, .form-textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 2px;
+    padding: 12px 14px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--off-white);
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .form-textarea { resize: vertical; min-height: 90px; font-family: var(--font-body); }
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-status { font-size: 13px; text-align: center; margin-top: 1rem; min-height: 18px; }
+  .form-status.success { color: var(--gold); }
+  .form-status.error { color: #e08080; }
+
 </style>
 </head>
 <body>
@@ -976,12 +1018,74 @@
 <section class="cta-section" id="contact">
   <p class="cta-arabic">بَارَكَ اللَّهُ فِيكُمْ</p>
   <h2 class="cta-heading">Ready to grow with barakah?</h2>
-  <p class="cta-sub">Let's build something your business and your deen can both be proud of. Book a free strategy call today.</p>
-  <a href="mailto:info@halalgrowthco.com" class="btn-primary" style="margin: 0 auto; display: inline-flex;">
-    Book a Free Strategy Call
-    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;"><path d="M1 7h12M8 2l6 5-6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
+  <p class="cta-sub">Let's build something your business and your deen can both be proud of. Fill out the form below and we'll be in touch within 24 hours.</p>
+
+  <form class="contact-form" id="leadForm">
+    <div class="form-group">
+      <label class="form-label" for="name">Name</label>
+      <input class="form-input" type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="email">Email</label>
+      <input class="form-input" type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="phone">Phone</label>
+      <input class="form-input" type="tel" id="phone" name="phone">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="message">Message</label>
+      <textarea class="form-textarea" id="message" name="message" placeholder="Tell us a bit about your business and what you need help with."></textarea>
+    </div>
+    <button class="form-submit" type="submit" id="submitBtn">Send Message</button>
+    <p class="form-status" id="formStatus"></p>
+  </form>
 </section>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    var status = document.getElementById('formStatus');
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoo3ESsLH7kQMLW8sAEcByr1IUwHV9afb1UX8KTRr360mYy1SPO5BDa0t9Q_Qv4MWQtQ/exec';
+
+    if (SCRIPT_URL.indexOf('PASTE_YOUR') === 0) {
+      status.textContent = 'Form is not yet connected. Please email info@halalgrowthco.com directly.';
+      status.className = 'form-status error';
+      return;
+    }
+
+    var data = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      message: document.getElementById('message').value
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+    status.className = 'form-status';
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    .then(function() {
+      status.textContent = 'Message sent. We will be in touch within 24 hours, in sha Allah.';
+      status.className = 'form-status success';
+      document.getElementById('leadForm').reset();
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    })
+    .catch(function() {
+      status.textContent = 'Something went wrong. Please email info@halalgrowthco.com directly.';
+      status.className = 'form-status error';
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    });
+  });
+</script>
 
 <!-- FOOTER -->
 <footer>
